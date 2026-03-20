@@ -9,16 +9,17 @@
 body{
     font-family: "Noto Sans TC", Arial;
     margin:0;
-    background:#f4f6f9;
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
     color:#333;
     transition:0.3s;
 }
 
+/* Header */
 header{
-    background:#4a6cf7;
+    background:linear-gradient(135deg,#4a6cf7,#7c8cff);
     color:white;
     text-align:center;
-    padding:40px 20px;
+    padding:50px 20px;
 }
 
 header h1{
@@ -26,61 +27,98 @@ header h1{
     font-size:36px;
 }
 
-.avatar{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    object-fit:cover;
-    border:4px solid white;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+header p{
+    opacity:0.9;
 }
 
+/* 頭像 */
+.avatar{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid white;
+    box-shadow:0 6px 15px rgba(0,0,0,0.25);
+    margin-bottom:10px;
+}
+
+/* Container */
 .container{
     max-width:900px;
     margin:auto;
     padding:30px;
 }
 
+/* Section */
 section{
-    margin-bottom:40px;
+    margin-bottom:30px;
 }
 
+/* 標題 */
 h2{
     border-left:5px solid #4a6cf7;
     padding-left:10px;
+    margin-bottom:15px;
 }
 
+/* 卡片 */
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.06);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* 技能 */
 .skill{
-    margin:10px 0;
+    margin:12px 0;
 }
 
 .skill-bar{
-    background:#ddd;
+    background:#eee;
     border-radius:20px;
     overflow:hidden;
 }
 
 .skill-level{
     height:10px;
-    background:#4a6cf7;
+    background:linear-gradient(90deg,#4a6cf7,#7c8cff);
 }
 
-.card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+/* 興趣tag */
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:10px;
 }
 
+.tag{
+    background:#eef2ff;
+    color:#4a6cf7;
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:14px;
+}
+
+/* 按鈕 */
 button{
-    background:#4a6cf7;
-    color:white;
+    background:white;
+    color:#4a6cf7;
     border:none;
     padding:10px 16px;
-    border-radius:6px;
+    border-radius:20px;
     cursor:pointer;
+    margin-top:10px;
+    font-weight:bold;
 }
 
+/* 深色模式 */
 .dark{
     background:#1e1e1e;
     color:#eee;
@@ -90,6 +128,16 @@ button{
     background:#2c2c2c;
 }
 
+.dark h2{
+    border-left:5px solid #7c8cff;
+}
+
+.dark .tag{
+    background:#333;
+    color:#fff;
+}
+
+/* footer */
 footer{
     text-align:center;
     padding:20px;
@@ -102,29 +150,31 @@ footer{
 
 <header>
 
-<!-- 隨機生成大頭照 -->
-<img class="avatar" src="https://i.pravatar.cc/300" alt="隨機大頭照">
+<!-- ⚠️記得可以換成你自己的照片 -->
+<img class="avatar" src="https://i.pravatar.cc/300" alt="大頭照">
 
 <h1>姚宜蓁</h1>
-<p>個人履歷網站</p>
+<p>亞洲大學｜資訊傳播系</p>
 
-<button onclick="toggleDark()">切換深色模式</button>
+<button onclick="toggleDark()">🌙 切換模式</button>
 
 </header>
 
 <div class="container">
 
+<!-- 自我介紹 -->
 <section>
 <div class="card">
 <h2>自我介紹</h2>
 <p>
-您好，我是姚宜蓁。  
-這裡是我的個人履歷網站，我對學習新技術、設計與數位創作充滿興趣。  
-希望能在工作中持續成長並發揮自己的能力。
+您好，我是姚宜蓁，目前就讀亞洲大學資訊傳播系。<br><br>
+我喜歡數位創作與設計，對網頁前端開發充滿興趣，  
+希望能將設計美感與技術結合，持續精進自己。
 </p>
 </div>
 </section>
 
+<!-- 技能 -->
 <section>
 <div class="card">
 <h2>技能</h2>
@@ -153,17 +203,34 @@ JavaScript
 </div>
 </section>
 
+<!-- 興趣（新加） -->
+<section>
+<div class="card">
+<h2>興趣與專長</h2>
+
+<div class="tags">
+<div class="tag">跳舞</div>
+<div class="tag">鋼琴</div>
+<div class="tag">Bass</div>
+<div class="tag">攝影</div>
+</div>
+
+</div>
+</section>
+
+<!-- 學歷 -->
 <section>
 <div class="card">
 <h2>學歷 / 經歷</h2>
 <ul>
-<li>XXXX學校 — XXXX科系</li>
-<li>XXXX公司 — XXXX職位</li>
-<li>專案：XXXX網站開發</li>
+<li>亞洲大學 — 資訊傳播系</li>
+<li>個人履歷網站製作</li>
+<li>持續學習前端開發</li>
 </ul>
 </div>
 </section>
 
+<!-- 聯絡 -->
 <section>
 <div class="card">
 <h2>聯絡方式</h2>
@@ -180,11 +247,9 @@ JavaScript
 </footer>
 
 <script>
-
 function toggleDark(){
     document.body.classList.toggle("dark");
 }
-
 </script>
 
 </body>
