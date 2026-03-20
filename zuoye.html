@@ -198,3 +198,95 @@
 
 <header>
     <img class="avatar" src="https://i.pravatar.cc/300" alt="姚宜蓁">
+    <h1>姚宜蓁</h1>
+    <p><i class="fas fa-university"></i> 亞洲大學｜資訊傳播系</p>
+</header>
+
+<div class="container">
+    <aside>
+        <section class="card">
+            <h2><i class="fas fa-user"></i> 關於我</h2>
+            <p>
+                您好！我是宜蓁。我熱愛將技術與美感結合，在資傳系的薰陶下，對前端開發與多媒體設計充滿熱情。
+            </p>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-address-book"></i> 聯絡資訊</h2>
+            <a href="mailto:your@email.com" class="contact-link">
+                <i class="fas fa-envelope"></i> your@email.com
+            </a>
+            <a href="#" class="contact-link">
+                <i class="fas fa-phone"></i> 09xx-xxx-xxx
+            </a>
+            <a href="#" class="contact-link">
+                <i class="fab fa-github"></i> github.com/yourname
+            </a>
+        </section>
+    </aside>
+
+    <main>
+        <section class="card">
+            <h2><i class="fas fa-tools"></i> 專業技能</h2>
+            <div class="skill-item">
+                <div class="skill-info"><span>HTML5</span><span>90%</span></div>
+                <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info"><span>CSS3 / SCSS</span><span>85%</span></div>
+                <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info"><span>JavaScript</span><span>70%</span></div>
+                <div class="skill-bar"><div class="skill-level" style="width: 70%"></div></div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-heart"></i> 興趣專長</h2>
+            <div class="tags">
+                <span class="tag"># 跳舞</span>
+                <span class="tag"># 鋼琴演奏</span>
+                <span class="tag"># Bass 彈奏</span>
+                <span class="tag"># 攝影與剪輯</span>
+                <span class="tag"># 介面設計</span>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-graduation-cap"></i> 學經歷</h2>
+            <ul>
+                <li><strong>亞洲大學</strong> - 資訊傳播系 (2022 - 至今)</li>
+                <li><strong>個人品牌建立</strong> - 獨立開發響應式履歷網站</li>
+                <li><strong>多媒體專案</strong> - 參與影像製作與網頁視覺規劃</li>
+            </ul>
+        </section>
+    </main>
+</div>
+
+<footer>
+    &copy; 2026 姚宜蓁 Yao Yi-Zhen. All Rights Reserved.
+</footer>
+
+<script>
+    function toggleDark() {
+        const body = document.body;
+        const btnIcon = document.querySelector('#themeBtn i');
+        
+        body.classList.toggle("dark-mode");
+        
+        if(body.classList.contains("dark-mode")) {
+            btnIcon.classList.replace("fa-moon", "fa-sun");
+        } else {
+            btnIcon.classList.replace("fa-sun", "fa-moon");
+        }
+    }
+
+    // 初次載入動畫效果
+    window.onload = () => {
+        console.log("Welcome to Yao's Resume");
+    };
+</script>
+
+</body>
+</html>
