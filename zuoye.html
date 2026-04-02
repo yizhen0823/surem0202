@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>姚宜蓁｜個人履歷</title>
+    <title>姚宜蓁｜個人履歷 Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <style>
         :root {
             --primary: #fb923c;
             --primary-dark: #f97316;
             --bg-gradient: linear-gradient(135deg, #fff7ed, #ffe4e6);
-            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-bg: rgba(255, 255, 255, 0.85);
             --text-main: #5a3e36;
             --text-muted: #8c7169;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -22,16 +23,13 @@
             --primary: #f97316;
             --primary-dark: #ea580c;
             --bg-gradient: linear-gradient(135deg, #1c1917, #292524);
-            --card-bg: rgba(68, 64, 60, 0.8);
+            --card-bg: rgba(45, 42, 40, 0.9);
             --text-main: #f5e9e2;
             --text-muted: #a8a29e;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
-        * {
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
+        * { box-sizing: border-box; transition: all 0.3s ease; }
 
         body {
             font-family: 'Noto Sans TC', sans-serif;
@@ -42,49 +40,27 @@
             line-height: 1.6;
         }
 
+        /* Header 樣式 */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, var(--primary), #f43f5e);
             color: white;
             text-align: center;
             padding: 80px 20px;
-            clip-path: ellipse(120% 100% at 50% 0%);
+            clip-path: ellipse(150% 100% at 50% 0%);
         }
 
         .avatar {
-            width: 140px;
-            height: 140px;
+            width: 140px; height: 140px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(255,255,255,0.8);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 4px solid rgba(255,255,255,0.5);
             margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 3px;
-            font-weight: 700;
-        }
-
-        .mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: var(--card-bg);
-            border: none;
-            padding: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
+        /* 容器佈局 */
         .container {
-            max-width: 1100px;
-            margin: -40px auto 40px;
+            max-width: 1000px;
+            margin: -40px auto 60px;
             padding: 0 20px;
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -93,12 +69,11 @@
 
         @media (max-width: 768px) {
             .container { grid-template-columns: 1fr; margin-top: 20px; }
-            header { padding: 60px 20px; }
         }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             padding: 30px;
             border-radius: 24px;
             box-shadow: var(--shadow);
@@ -106,152 +81,116 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
+        .card:hover { transform: translateY(-5px); }
 
-        h2 {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        h2::after {
-            content: "";
-            flex: 1;
-            height: 2px;
-            background: var(--primary);
-            opacity: 0.2;
-        }
-
-        .skill-item { margin-bottom: 18px; }
-        .skill-info { display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: bold; }
-        
-        .skill-bar {
-            height: 8px;
-            background: rgba(0,0,0,0.05);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .skill-level {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            border-radius: 10px;
-            width: 0;
-            transition: width 1.5s cubic-bezier(0.1, 0.5, 0.5, 1);
-        }
-
-        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag {
+        /* 標籤樣式 */
+        .interest-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .interest-tag {
             background: var(--primary);
             color: white;
-            padding: 6px 16px;
+            padding: 4px 12px;
             border-radius: 50px;
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.85rem;
+            font-weight: bold;
         }
-        .tag:hover { opacity: 1; transform: scale(1.05); }
 
-        ul { padding-left: 20px; color: var(--text-muted); }
-        li { margin-bottom: 10px; }
+        /* 技能條 */
+        .skill-item { margin-bottom: 15px; }
+        .skill-bar { height: 8px; background: rgba(0,0,0,0.05); border-radius: 10px; overflow: hidden; }
+        .skill-level { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-dark)); width: 0; transition: width 1.5s ease; }
+
+        /* 播放器樣式 */
+        .music-player {
+            position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+            background: var(--card-bg); padding: 15px; border-radius: 20px;
+            box-shadow: var(--shadow); border: 1px solid var(--primary);
+            display: flex; flex-direction: column; gap: 8px; width: 220px;
+        }
+        audio { width: 100%; height: 30px; }
+
+        .mode-toggle {
+            position: fixed; top: 20px; right: 20px; z-index: 1000;
+            background: var(--card-bg); border: none; padding: 12px;
+            border-radius: 50%; cursor: pointer; color: var(--primary);
+        }
         
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            text-decoration: none;
-            color: var(--text-main);
-        }
-        .contact-link i {
-            width: 35px;
-            height: 35px;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            opacity: 0.6;
-            font-size: 0.9rem;
-        }
+        .contact-link { display: block; margin-bottom: 10px; text-decoration: none; color: var(--text-main); }
     </style>
 </head>
-<body>
-
-<!-- 🔥 背景音樂（已幫你加好） -->
-<audio autoplay loop hidden>
-    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
-</audio>
+<body onload="document.querySelectorAll('.skill-level').forEach(el => el.style.width = el.dataset.width)">
 
 <button class="mode-toggle" onclick="toggleDark()" id="themeBtn">
     <i class="fas fa-moon"></i>
 </button>
 
-<header>
-    <img class="avatar" src="https://i.pravatar.cc/300" alt="姚宜蓁">
-    <h1>姚宜蓁</h1>
+<div class="music-player animate__animated animate__fadeInUp">
+    <div style="font-size: 0.8rem; font-weight: bold;"><i class="fas fa-music"></i> 音樂播放中</div>
+    <audio controls>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<header class="animate__animated animate__fadeInDown">
+    <img class="avatar" src="https://i.pravatar.cc/300?u=yizhen" alt="姚宜蓁">
+    <h1>姚宜蓁 Yao Yi-Zhen</h1>
     <p><i class="fas fa-university"></i> 亞洲大學｜資訊傳播系</p>
 </header>
 
 <div class="container">
-    <aside>
+    <aside class="animate__animated animate__fadeInLeft">
         <section class="card">
             <h2><i class="fas fa-user"></i> 關於我</h2>
-            <p>
-                您好！我是宜蓁。我熱愛將技術與美感結合，在資傳系的薰陶下，對前端開發與多媒體設計充滿熱情。
-            </p>
+            <p>我是宜蓁，熱愛結合美感與科技。除了網頁開發，我也投入於藝術與音樂創作。</p>
+            <div class="interest-tags">
+                <span class="interest-tag">🎹 鋼琴</span>
+                <span class="interest-tag">🎸 貝斯</span>
+                <span class="interest-tag">💃 舞蹈</span>
+                <span class="interest-tag">📷 攝影</span>
+            </div>
         </section>
 
         <section class="card">
-            <h2><i class="fas fa-address-book"></i> 聯絡資訊</h2>
-            <a href="mailto:your@email.com" class="contact-link">
-                <i class="fas fa-envelope"></i> your@email.com
-            </a>
-            <a href="#" class="contact-link">
-                <i class="fas fa-phone"></i> 09xx-xxx-xxx
-            </a>
-            <a href="#" class="contact-link">
-                <i class="fab fa-github"></i> github.com/yourname
-            </a>
+            <h2><i class="fas fa-envelope"></i> 聯絡我</h2>
+            <a href="https://github.com/yizhen0823" class="contact-link"><i class="fab fa-github"></i> yizhen0823</a>
         </section>
     </aside>
 
-    <main>
+    <main class="animate__animated animate__fadeInRight">
         <section class="card">
             <h2><i class="fas fa-tools"></i> 專業技能</h2>
             <div class="skill-item">
-                <div class="skill-info"><span>HTML5</span><span>90%</span></div>
-                <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
+                <span>HTML / CSS</span>
+                <div class="skill-bar"><div class="skill-level" data-width="90%"></div></div>
             </div>
+            <div class="skill-item">
+                <span>UI Design</span>
+                <div class="skill-bar"><div class="skill-level" data-width="85%"></div></div>
+            </div>
+            <div class="skill-item">
+                <span>JavaScript</span>
+                <div class="skill-bar"><div class="skill-level" data-width="70%"></div></div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-briefcase"></i> 專案作品</h2>
+            <p>● 好餅友 Branding 設計</p>
+            <p>● 個人響應式履歷開發</p>
         </section>
     </main>
 </div>
 
-<footer>
-    &copy; 2026 姚宜蓁 Yao Yi-Zhen. All Rights Reserved.
+<footer style="text-align: center; padding: 40px; opacity: 0.6;">
+    &copy; 2026 姚宜蓁 Yao Yi-Zhen.
 </footer>
 
 <script>
     function toggleDark() {
         const body = document.body;
         const btnIcon = document.querySelector('#themeBtn i');
-        
         body.classList.toggle("dark-mode");
-        
-        if(body.classList.contains("dark-mode")) {
-            btnIcon.classList.replace("fa-moon", "fa-sun");
-        } else {
-            btnIcon.classList.replace("fa-sun", "fa-moon");
-        }
+        btnIcon.classList.toggle("fa-moon");
+        btnIcon.classList.toggle("fa-sun");
     }
 </script>
 
