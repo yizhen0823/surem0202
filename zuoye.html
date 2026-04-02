@@ -6,20 +6,20 @@
     <title>姚宜蓁 | 互動個人履歷</title>
     <style>
         :root {
-            --primary: #FF8C42; /* 暖橘 */
+            --primary: #FF8C42;
             --bg: #FFF9F5;
-            --card-bg: #FFFFFF;
+            --card-bg: rgba(255, 255, 255, 0.9);
             --text: #5D4037;
             --accent: #FFD166;
-            --disk-color: #333;
         }
 
+        /* 另一種顏色模式 (冷色調/文藝青) */
         .cool-mode {
-            --primary: #54A0FF; /* 文藝藍 */
+            --primary: #4A90E2;
             --bg: #F0F7FF;
-            --card-bg: #FFFFFF;
+            --card-bg: rgba(255, 255, 255, 0.9);
             --text: #2C3E50;
-            --accent: #AEE2FF;
+            --accent: #A3D1FF;
         }
 
         body {
@@ -31,145 +31,154 @@
             display: flex; flex-direction: column; align-items: center;
         }
 
-        .main-container { max-width: 950px; width: 100%; }
+        .main-container { max-width: 900px; width: 100%; }
 
-        /* 切換按鈕 */
-        .mode-toggle {
-            position: fixed; top: 20px; right: 20px; z-index: 1000;
+        /* 控制按鈕區 */
+        .controls {
+            display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 20px;
         }
         .btn {
-            padding: 10px 20px; border-radius: 50px; border: none; cursor: pointer;
-            background: var(--primary); color: white; font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 8px 15px; border-radius: 20px; border: none; cursor: pointer;
+            background: var(--primary); color: white; font-weight: bold; transition: 0.3s;
         }
+        .btn:hover { opacity: 0.8; transform: scale(1.05); }
 
-        /* 頂部資訊區 (活潑不對稱排版) */
-        .profile-card {
-            display: grid; grid-template-columns: 200px 1fr; gap: 40px;
-            background: var(--card-bg); border-radius: 40px 10px 40px 10px;
-            padding: 40px; margin-bottom: 50px; box-shadow: 10px 10px 0px var(--accent);
+        /* 卡片排版 */
+        .card {
+            background: var(--card-bg); border-radius: 25px; padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 25px;
+            border: 1px solid rgba(0,0,0,0.03); transition: 0.3s;
         }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+        /* 頭像與基本資訊 */
+        .profile-section { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
         .avatar {
-            width: 200px; height: 200px; border-radius: 20px;
-            object-fit: cover; transform: rotate(-3deg); border: 8px solid white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 150px; height: 150px; border-radius: 50%; 
+            border: 5px solid var(--accent); object-fit: cover;
         }
+        .info h1 { margin: 0; font-size: 32px; color: var(--primary); letter-spacing: 3px; }
 
-        /* 興趣標籤 */
+        /* 興趣與證照的豐富排版 */
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+
+        .tag-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
         .tag {
-            display: inline-block; padding: 6px 16px; margin: 5px;
-            border-radius: 50px; background: var(--bg); color: var(--primary);
-            font-weight: bold; border: 2px solid var(--primary);
+            background: var(--accent); color: var(--text); padding: 5px 15px;
+            border-radius: 15px; font-size: 14px; font-weight: bold;
         }
 
-        /* 證照獨立區塊 (與上方區塊大幅度隔開) */
-        .cert-container {
-            margin-top: 60px; display: flex; flex-direction: column; gap: 20px;
+        /* 證照獨立區塊：特別隔開 */
+        .cert-section { margin-top: 10px; }
+        .cert-item {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+            padding: 10px; background: rgba(255,255,255,0.5); border-radius: 10px;
         }
-        .cert-card {
-            background: var(--primary); color: white; padding: 25px;
-            border-radius: 15px; width: fit-content; align-self: flex-end;
-            transform: skewX(-5deg); box-shadow: 5px 5px 0px var(--text);
-        }
-        .cert-card:nth-child(even) { align-self: flex-start; transform: skewX(5deg); background: var(--accent); color: var(--text); }
 
-        /* --- 黑膠唱片播放器排版 --- */
-        .vinyl-player {
-            position: fixed; bottom: 30px; left: 30px;
-            background: white; padding: 20px 30px; border-radius: 100px;
+        /* 音樂播放器 */
+        .music-player {
+            position: fixed; bottom: 20px; width: 90%; max-width: 800px;
+            background: white; border-radius: 50px; padding: 15px 30px;
             display: flex; align-items: center; gap: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15); z-index: 1000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 2px solid var(--primary);
+            z-index: 100;
+        }
+        .music-info { flex: 1; }
+        .music-title { font-weight: bold; color: var(--primary); font-size: 14px; }
+        
+        select {
+            padding: 5px; border-radius: 10px; border: 1px solid var(--primary);
+            outline: none; background: white; cursor: pointer;
         }
 
-        .disk {
-            width: 60px; height: 60px; background: var(--disk-color);
-            border-radius: 50%; border: 2px solid #555;
-            position: relative; display: flex; align-items: center; justify-content: center;
-        }
-        .disk::after {
-            content: ''; width: 20px; height: 20px; background: white; border-radius: 50%;
-        }
-        .disk.playing { animation: rotateDisk 3s linear infinite; }
-
-        @keyframes rotateDisk { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        .player-controls { display: flex; flex-direction: column; }
-        .song-title { font-size: 14px; font-weight: bold; color: var(--primary); margin-bottom: 5px; }
-
-        /* 響應式 */
         @media (max-width: 768px) {
-            .profile-card { grid-template-columns: 1fr; text-align: center; }
-            .avatar { transform: rotate(0); }
-            .vinyl-player { left: 50%; transform: translateX(-50%); width: 80%; }
+            .grid-layout { grid-template-columns: 1fr; }
+            .music-player { flex-direction: column; border-radius: 20px; }
         }
     </style>
 </head>
 <body>
 
-<div class="mode-toggle">
-    <button class="btn" onclick="toggleMode()">切換模式</button>
-</div>
-
 <div class="main-container">
-    <div class="profile-card">
-        <img id="myAvatar" src="" class="avatar" alt="姚宜蓁">
-        <div class="info">
-            <h1 style="font-size: 45px; margin: 0; color: var(--primary);">姚宜蓁</h1>
-            <p style="font-size: 20px; letter-spacing: 2px;">學號：114024082 | 資訊傳播系</p>
-            <div style="margin-top: 20px;">
-                <span class="tag">🎹 鋼琴</span>
-                <span class="tag">📸 攝影</span>
-                <span class="tag">🎨 繪畫</span>
+    <div class="controls">
+        <button class="btn" onclick="toggleMode()">切換顏色模式</button>
+    </div>
+
+    <div class="card">
+        <div class="profile-section">
+            <img id="myAvatar" src="https://i.pravatar.cc/300?u=yichen" class="avatar" alt="姚宜蓁">
+            <div class="info">
+                <h1>姚宜蓁</h1>
+                <p>學號：114024082 | 資訊傳播系</p>
+                <div class="tag-container">
+                    <span class="tag">🎹 彈鋼琴</span>
+                    <span class="tag">📸 拍照</span>
+                    <span class="tag">🎨 畫畫</span>
+                </div>
             </div>
-            <p style="margin-top: 20px; line-height: 1.8;">
-                我是宜蓁，來自資傳系。喜歡在程式碼中注入美感，在畫面中尋找節奏。
-                這份履歷是我對網頁互動的一次小實驗。
-            </p>
         </div>
     </div>
 
-    <div class="cert-container">
-        <div class="cert-card">🏆 電腦繪圖國際認證</div>
-        <div class="cert-card">🏆 網頁設計技術士證照</div>
-        <div class="cert-card">🏆 鋼琴檢定合格</div>
+    <div class="grid-layout">
+        <div class="card">
+            <h3 style="color:var(--primary)">關於我</h3>
+            <p>你好！我是宜蓁。我喜歡捕捉生活中的美感，無論是透過琴聲、鏡頭還是畫筆。在資傳系的學習中，我致力於將這些感性的藝術融入理性的程式與設計之中。</p>
+        </div>
+
+        <div class="card">
+            <h3 style="color:var(--primary)">專業技能</h3>
+            <div class="tag-container">
+                <span class="tag" style="background:#eee">HTML/CSS</span>
+                <span class="tag" style="background:#eee">UI/UX 設計</span>
+                <span class="tag" style="background:#eee">平面攝影</span>
+                <span class="tag" style="background:#eee">影音剪輯</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card cert-section">
+        <h3 style="color:var(--primary)">🏆 專業證照與榮譽</h3>
+        <div class="cert-item">✅ 電腦繪圖國際認證</div>
+        <div class="cert-item">✅ 網頁設計技術士證照</div>
+        <div class="cert-item">✅ 鋼琴檢定合格證書</div>
     </div>
 </div>
 
-<div class="vinyl-player">
-    <div class="disk" id="vinylDisk"></div>
-    <div class="player-controls">
-        <div class="song-title" id="trackName">Music: 點擊播放音樂</div>
-        <audio id="bgMusic" onplay="startDisk()" onpause="stopDisk()">
-            <source src="music.mp3" type="audio/mpeg">
-        </audio>
-        <select id="trackSelect" onchange="changeTrack()" style="border: 1px solid #ddd; border-radius: 5px; padding: 2px;">
-            <option value="music.mp3">我的音樂 01</option>
-            <option value="music02.mp3">我的音樂 02</option>
-        </select>
+<div class="music-player">
+    <div class="music-info">
+        <div class="music-title" id="songName">正在播放：清新鋼琴曲</div>
+        <p style="margin:0; font-size:12px;">切換曲目：
+            <select id="songSelector" onchange="changeMusic()">
+                <option value="piano.mp3">清新鋼琴曲</option>
+                <option value="chill.mp3">輕快爵士樂</option>
+                <option value="nature.mp3">大自然白噪音</option>
+            </select>
+        </p>
     </div>
+    <audio id="mainAudio" controls>
+        <source src="piano.mp3" type="audio/mpeg">
+    </audio>
 </div>
 
 <script>
-    const audio = document.getElementById('bgMusic');
-    const disk = document.getElementById('vinylDisk');
-
-    // 切換顏色模式
+    // 1. 切換顏色模式
     function toggleMode() {
         document.body.classList.toggle('cool-mode');
     }
 
-    // 音樂控制
-    function startDisk() { disk.classList.add('playing'); }
-    function stopDisk() { disk.classList.remove('playing'); }
-
-    function changeTrack() {
-        const select = document.getElementById('trackSelect');
-        audio.src = select.value;
-        document.getElementById('trackName').innerText = "Music: " + select.options[select.selectedIndex].text;
+    // 2. 切換音樂功能
+    function changeMusic() {
+        const selector = document.getElementById('songSelector');
+        const audio = document.getElementById('mainAudio');
+        const songNameDisplay = document.getElementById('songName');
+        
+        // 更換來源並重新載入
+        audio.src = selector.value;
+        songNameDisplay.innerText = "正在播放：" + selector.options[selector.selectedIndex].text;
         audio.play();
     }
 
-    // 隨機頭貼
+    // 3. 隨機頭貼（每次進入網頁都不一樣）
     window.onload = () => {
         const rand = Math.floor(Math.random() * 1000);
         document.getElementById('myAvatar').src = `https://i.pravatar.cc/300?u=${rand}`;
