@@ -1,213 +1,244 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>姚宜蓁 | 個人動態履歷</title>
-    <style>
-        :root {
-            --warm-bg: #FFF9F5; /* 溫暖米粉色背景 */
-            --primary-coral: #FF7F50; /* 珊瑚橘 */
-            --soft-yellow: #FFD93D; /* 太陽黃 */
-            --text-main: #4E342E; /* 深褐文字 */
-            --card-shadow: 0 10px 25px rgba(255, 127, 80, 0.1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>姚宜蓁 | 個人動態履歷</title>
 
-        body {
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-            background-color: var(--warm-bg);
-            color: var(--text-main);
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
+<style>
+:root {
+    --bg-dark: #1a1a2e;
+    --city-purple: #6C63FF;
+    --neon-pink: #FF4D6D;
+    --text-light: #f5f5f5;
+}
 
-        /* 背景微光動畫 */
-        body::before {
-            content: "";
-            position: fixed;
-            top: -10%; left: -10%; width: 120%; height: 120%;
-            background: radial-gradient(circle, rgba(255,217,61,0.1) 0%, transparent 70%);
-            z-index: -1;
-            animation: pulse 8s ease-in-out infinite alternate;
-        }
+body {
+    font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    background: linear-gradient(120deg, #1a1a2e, #16213e);
+}
 
-        @keyframes pulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
-        }
+/* 🌆 城市光暈背景 */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,77,109,0.15), transparent 60%);
+    animation: glow 10s infinite alternate;
+    z-index: -1;
+}
 
-        .main-wrapper {
-            max-width: 900px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 25px;
-            margin-bottom: 60px;
-        }
+@keyframes glow {
+    from { transform: translate(-20%, -20%) scale(1); }
+    to { transform: translate(0%, 0%) scale(1.2); }
+}
 
-        /* 通用卡片樣式 */
-        .card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 25px;
-            padding: 30px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid #FFF1E6;
-            transition: all 0.3s ease;
-        }
+/* 主排版 */
+.main-wrapper {
+    max-width: 1000px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    margin-bottom: 80px;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(255, 127, 80, 0.2);
-        }
+/* 卡片 */
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
+}
 
-        /* 左側欄位 */
-        .left-col { display: flex; flex-direction: column; gap: 25px; }
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 0 25px rgba(255,77,109,0.3);
+}
 
-        .profile-card { text-align: center; background: linear-gradient(135deg, #FF7F50, #FFB385); color: white; }
-        
-        .avatar-container {
-            width: 150px; height: 150px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.4);
-            overflow: hidden;
-            background: #eee;
-        }
-        .avatar-container img { width: 100%; height: 100%; object-fit: cover; }
+/* 左側 */
+.left-col { display: flex; flex-direction: column; gap: 25px; }
 
-        .name-tag h1 { margin: 10px 0; font-size: 28px; letter-spacing: 2px; }
-        .name-tag p { opacity: 0.9; font-size: 14px; }
+.profile-card {
+    text-align: center;
+    background: linear-gradient(135deg, #6C63FF, #FF4D6D);
+}
 
-        /* 興趣區塊樣式 */
-        .interest-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            font-weight: bold;
-            color: var(--primary-coral);
-        }
+.avatar-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.4);
+    overflow: hidden;
+}
 
-        .interest-icon {
-            background: var(--soft-yellow);
-            width: 35px; height: 35px;
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 18px;
-        }
+.avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        /* 右側欄位 */
-        .right-col { display: flex; flex-direction: column; gap: 25px; }
+.name-tag h1 {
+    margin: 10px 0;
+    font-size: 28px;
+}
 
-        .section-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--primary-coral);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.name-tag p {
+    opacity: 0.8;
+}
 
-        .section-title::after {
-            content: ""; flex: 1; height: 2px; background: var(--soft-yellow); opacity: 0.5;
-        }
+/* 標題 */
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--neon-pink);
+    margin-bottom: 15px;
+    position: relative;
+}
 
-        /* 底部音樂播放器 */
-        .audio-bar {
-            position: fixed;
-            bottom: 20px;
-            width: 90%;
-            max-width: 800px;
-            background: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            box-shadow: 0 -5px 30px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 2px solid var(--soft-yellow);
-            z-index: 100;
-        }
+.section-title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--city-purple);
+    margin-top: 5px;
+}
 
-        .audio-label { display: flex; align-items: center; gap: 10px; font-weight: bold; }
+/* 興趣 */
+.interest-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
 
-        .viz-container { display: flex; gap: 3px; align-items: flex-end; height: 20px; }
-        .viz-bar { width: 3px; background: var(--primary-coral); animation: dance 1s infinite alternate; }
-        @keyframes dance { from { height: 4px; } to { height: 18px; } }
+.interest-icon {
+    background: var(--city-purple);
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        audio { height: 35px; }
+/* 音樂播放器 */
+.audio-bar {
+    position: fixed;
+    bottom: 20px;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(0,0,0,0.7);
+    padding: 15px 25px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
 
-        /* 響應式 */
-        @media (max-width: 768px) {
-            .main-wrapper { grid-template-columns: 1fr; }
-            .audio-bar { flex-direction: column; height: auto; border-radius: 20px; gap: 10px; }
-        }
-    </style>
+/* 音樂動畫 */
+.viz-bar {
+    width: 4px;
+    height: 5px;
+    background: var(--neon-pink);
+    margin: 0 2px;
+    animation: none;
+}
+
+.playing .viz-bar {
+    animation: music 0.6s infinite alternate;
+}
+
+@keyframes music {
+    from { height: 5px; }
+    to { height: 20px; }
+}
+
+/* 響應式 */
+@media (max-width: 768px) {
+    .main-wrapper { grid-template-columns: 1fr; }
+}
+</style>
 </head>
+
 <body>
 
 <div class="main-wrapper">
-    <div class="left-col">
-        <div class="card profile-card">
-            <div class="avatar-container">
-                <img id="userImg" src="https://i.pravatar.cc/300?u=114024082" alt="宜蓁">
-            </div>
-            <div class="name-tag">
-                <h1>姚宜蓁</h1>
-                <p>學號：114024082</p>
-                <p>資訊傳播系學生</p>
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="section-title">我的愛好</div>
-            <div class="interest-item"><div class="interest-icon">🎹</div> 彈鋼琴</div>
-            <div class="interest-item"><div class="interest-icon">📸</div> 拍照攝影</div>
-            <div class="interest-item"><div class="interest-icon">🎨</div> 繪畫創作</div>
+<div class="left-col">
+    <div class="card profile-card">
+        <div class="avatar-container">
+            <img id="userImg" src="https://i.pravatar.cc/300?u=114024082">
+        </div>
+        <div class="name-tag">
+            <h1>姚宜蓁</h1>
+            <p>學號：114024082</p>
+            <p>資訊傳播系學生</p>
         </div>
     </div>
 
-    <div class="right-col">
-        <div class="card">
-            <div class="section-title">關於我</div>
-            <p>你好！我是宜蓁。身為資傳系的學生，我熱衷於挖掘數位內容中的美感。我的生活離不開音樂、快門聲與畫筆，這也讓我對於 UI/UX 設計與影音製作有著獨特的直覺與熱忱。</p>
-        </div>
-
-        <div class="card">
-            <div class="section-title">專業技能</div>
-            <p>● 數位影像處理 (Photoshop / Lightroom)</p>
-            <p>● 網頁前端開發基礎 (HTML / CSS / JS)</p>
-            <p>● 多媒體創意企劃與劇本撰寫</p>
-            <p>● 鋼琴藝術表現力</p>
-        </div>
+    <div class="card">
+        <div class="section-title">我的愛好</div>
+        <div class="interest-item"><div class="interest-icon">🎹</div>彈鋼琴</div>
+        <div class="interest-item"><div class="interest-icon">📸</div>拍照攝影</div>
+        <div class="interest-item"><div class="interest-icon">🎨</div>繪畫創作</div>
     </div>
 </div>
 
-<div class="audio-bar">
-    <div class="audio-label">
-        <span>🎵 背景音樂</span>
-        <div class="viz-container">
-            <div class="viz-bar" style="animation-delay: 0.1s"></div>
-            <div class="viz-bar" style="animation-delay: 0.3s"></div>
-            <div class="viz-bar" style="animation-delay: 0.2s"></div>
-            <div class="viz-bar" style="animation-delay: 0.4s"></div>
-        </div>
+<div class="right-col">
+    <div class="card">
+        <div class="section-title">關於我</div>
+        <p>你好！我是宜蓁。身為資傳系學生，我熱衷於挖掘數位內容中的美感，喜歡用影像與音樂表達情緒。</p>
     </div>
-    <audio controls>
+
+    <div class="card">
+        <div class="section-title">專業技能</div>
+        <p>● Photoshop / Lightroom</p>
+        <p>● HTML / CSS / JS</p>
+        <p>● 影音企劃與劇本</p>
+        <p>● 鋼琴演奏</p>
+    </div>
+</div>
+
+</div>
+
+<!-- 音樂播放器 -->
+<div class="audio-bar" id="player">
+    <span>🎧 點擊播放音樂</span>
+    <div style="display:flex">
+        <div class="viz-bar"></div>
+        <div class="viz-bar"></div>
+        <div class="viz-bar"></div>
+    </div>
+    <audio id="audio" controls>
         <source src="music.mp3" type="audio/mpeg">
-        瀏覽器不支援播放器
     </audio>
 </div>
 
 <script>
-    // 增加一點隨機性，每次刷新會抓取不同的頭貼（但維持相同風格）
-    const randomNum = Math.floor(Math.random() * 1000);
-    document.getElementById('userImg').src = `https://i.pravatar.cc/300?u=${randomNum}`;
+const audio = document.getElementById("audio");
+const player = document.getElementById("player");
+
+// 播放才會動
+audio.onplay = () => player.classList.add("playing");
+audio.onpause = () => player.classList.remove("playing");
+
+// 頭貼隨機
+const randomNum = Math.floor(Math.random() * 1000);
+document.getElementById('userImg').src = `https://i.pravatar.cc/300?u=${randomNum}`;
 </script>
 
 </body>
